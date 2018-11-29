@@ -30,8 +30,19 @@ pipeline {
                 	echo "Building virtualenv"
                     sh  ''' python3 -m venv venv
                             . ./venv/bin/activate
+                            pip install pytest
                         '''
                     }
+            }
+        }
+
+        stage('Unit tests') {
+            steps {
+                withPythonEnv('python3') {
+                    sh ''' . ./venv/bin/activate
+                            python -m pytest --verbose --junit-xml reports/unit_tests.xml
+                       '''
+                }
             }
         }
     }

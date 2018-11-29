@@ -1,3 +1,0 @@
-"""
-${SHORT_DESCRIPTION}
-"""

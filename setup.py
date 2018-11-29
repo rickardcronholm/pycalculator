@@ -1,3 +1,13 @@
+# ----------------------------------------------------------------------------------------
+#
+#   Copyright 2018, Spectronic Medical AB, Helsingborg, Sweden
+#
+#   All rights reserved. File may not be used, copied, reviewed, executed or
+#   otherwise utilized for any purpose without prior written approval from
+#   Spectronic Medical AB.
+#
+# ----------------------------------------------------------------------------------------
+
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
 import os
@@ -8,29 +18,29 @@ with open("README.md", "r") as fh:
 
 # get __version__ from _version.py
 base_dir = os.path.dirname(os.path.realpath(__file__))
-ver_file = os.path.join(base_dir, "${PACKAGE_NAME}", '_version.py')
+ver_file = os.path.join(base_dir, "calculator", '_version.py')
 with open(ver_file) as f:
     exec(f.read())
 
 def data_files_inventory():
     data_files = []
-    data_roots = ["${PACKAGE_NAME}/data"]
+    data_roots = ["calculator/data"]
     for data_root in data_roots:
         for root, subfolder, files in os.walk(data_root):
-            files = [x.replace("${PACKAGE_NAME}/", "") for x in glob(root + "/*")
+            files = [x.replace("calculator/", "") for x in glob(root + "/*")
                      if not os.path.isdir(x)]
             data_files = data_files + files
     return data_files
 
 
 setup(
-    name = "${PACKAGE_NAME}",
+    name = "calculator",
     version = __version__,
 
     author = "Spectronic Medical AB",
     author_email = "support@spectronic.se",
 
-    description = "${SHORT_DESCRIPTION}",
+    description = "Basic Python calculator",
     long_description = long_description,
     long_description_content_type= " text/markdown",
 
@@ -40,7 +50,7 @@ setup(
     packages=find_packages(exclude=["tests"]),
 
 
-    package_data = {"${PACKAGE_NAME}": data_files_inventory()},
+    package_data = {"calculator": data_files_inventory()},
 
 
     python_requires='>=3',

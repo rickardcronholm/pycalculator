@@ -33,7 +33,7 @@ cd ${repo_name}
 sed -i 's:$YYYY:'"${year}"':g' copyright
 # PREPEND copyright
 mkdir -p tmp/src
-for item in README.md setup.py src/_version.py
+for item in README.md setup.py src/_version.py src/__init__.py src/__main__.py
 do
     cat "copyright" > tmp/$item
     cat $item >> tmp/$item

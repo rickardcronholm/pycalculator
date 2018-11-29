@@ -1,0 +1,4 @@
+recursive-include ${PACKAGE_NAME}/data/*
+include ${PACKAGE_NAME}/*
+include README.md
+

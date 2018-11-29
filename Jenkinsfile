@@ -26,11 +26,13 @@ pipeline {
 
         stage('Create environment') {
             steps {
-		withPythonEnv('python3') {
+                withPythonEnv('python3') {
                 	echo "Building virtualenv"
-			sh  ''' python3 -m venv venv
-		          	. ./venv/bin/activate
-                '''
+                    sh  ''' python3 -m venv venv
+                            . ./venv/bin/activate
+                        '''
+                    }
+            }
         }
     }
 }

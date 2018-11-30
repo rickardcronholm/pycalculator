@@ -44,9 +44,9 @@ pipeline {
                 withPythonEnv('python3') {
 	                echo "Raw metrics"
         	        sh  ''' . ./venv/bin/activate
-                	        radon raw --json irisvmpy > raw_report.json
-                        	radon cc --json irisvmpy > cc_report.json
-	                        radon mi --json irisvmpy > mi_report.json
+                	        radon raw --json calculator > raw_report.json
+                        	radon cc --json calculator > cc_report.json
+	                        radon mi --json calculator > mi_report.json
 
                 	    '''
 	                echo "Test coverage"

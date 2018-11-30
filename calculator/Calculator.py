@@ -1,3 +1,6 @@
+import numpy as np
+
+
 class Calculator():
 
     def __init__(self):
@@ -10,7 +13,7 @@ class Calculator():
         return x - y
 
     def multiple(self, x, y):
-        return x * y
+        return np.multiply(x, y)
 
     def devide(self, x, y):
         return x/y

@@ -30,6 +30,7 @@ pipeline {
                 	echo "Building virtualenv"
                     sh  ''' python3 -m venv venv
                             . ./venv/bin/activate
+                            pip install numpy
                             pip install pytest
                             pip install radon
                             pip install coverage

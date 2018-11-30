@@ -56,7 +56,7 @@ pipeline {
 	                    '''
         	        echo "Style check"
                 	sh  ''' . ./venv/bin/activate
-                        	python -m pylint calculator || true
+                            python -m pylint --output-format=parseable --exit-zero calculator > pylint.log
 	                    '''
                 }
             }
@@ -72,7 +72,17 @@ pipeline {
                                    maxNumberOfBuilds: 10,
                                    onlyStable: false,
                                    sourceEncoding: 'ASCII',
-                                   zoomCoverageChart: false])
+                                   zoomCoverageChart: false
+                    ])
+
+                    step([$class: 'WarningsPublisher',
+                                   parserConfigurations : [[
+                                        parserName : 'PYLint',
+                                        pattern : 'pylint.log'
+                                   ]]
+                                   unstableTotalAll : '0',
+                                   usePreviousBuildAsReference: true
+                    ])
                 }
             }
         }
